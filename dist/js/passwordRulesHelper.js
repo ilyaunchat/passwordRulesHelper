@@ -100,7 +100,7 @@ var onRejectedCallback = function () {
             // Build lists
             $.each(aParameters.rules, function (iKey, aRule) {
                 if (aRule.enable) {
-                    oRulesBuilder += '<li class="ko ' + aParameters.koClass + ' ' + aRule.name + '">' + aRule.message + '</li>';
+                    oRulesBuilder += '<li class="ko ' + aParameters.koClass + ' ' + aRule.name + '">' + '<span>' + aRule.message + '</span>' + '</li>';
                 }
             });
 
