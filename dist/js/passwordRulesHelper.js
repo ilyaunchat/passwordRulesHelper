@@ -118,13 +118,15 @@ var onRejectedCallback = function () {
             var sIdContainer = typeof (aParameters.container) === 'undefined' ? aParameters.containerId : aParameters.container.attr('id');
 
             // Execute checkRules on load
-            checkRules(aParameters, $(this).val(), sIdContainer);
+            $.when(checkRules(dtd, aParameters, $(this).val(), sIdContainer))
+                .done(resolve)
+                .fail(reject);
 
             // Execute checkRules function
             $(this).on("keyup", function () {
                 $.when(checkRules(dtd, aParameters, $(this).val(), sIdContainer))
                     .done(resolve)
-                    .fail(reject)
+                    .fail(reject);
             });
 
             $(this).on('paste', function () {
@@ -134,7 +136,7 @@ var onRejectedCallback = function () {
             $(this).on("change", function () {
                 $.when(checkRules(dtd, aParameters, $(this).val(), sIdContainer))
                     .done(resolve)
-                    .fail(reject)
+                    .fail(reject);
             });
         });
     };
